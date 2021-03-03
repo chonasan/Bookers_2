@@ -66,12 +66,7 @@
 
                   <td>
                    <div class="comments">
-                    <p>コメント件数：<%= @book.book_comments.count %></p>
-                    <% @book.book_comments.each do |book_comment| %>
-                      <p><%= image_tag('sample-author1.jpg') %></p>
-                      <%= book_comment.user.name %>
-                      <%= book_comment.created_at.strftime('%Y/%m/%d') %><%= book_comment.comment %>
-                    <% end %>
+                   <p>コメント件数：<%= book.book_comments.count %></p>
                     </div>
                   </td>
 
