@@ -6,8 +6,10 @@ class BooksController < ApplicationController
     @newbook = Book.new
     @book_comment = BookComment.new
     @book_comments = @book.book_comments
+    p @book_comments
+     logger.debug("標準出力とログファイルに記録される")
   end
-  
+
 
   def index
     @user = current_user
@@ -35,7 +37,7 @@ class BooksController < ApplicationController
       @books = Book.all
       @book = Book.new(book_params) #Book.newの:title, :bodyを更新する
       @book.user_id = current_user.id #nillのidを更新
-     if @book.save
+     if  @book.save
       flash[:notice] = "You have created book successfully."
       redirect_to book_path(@book.id)
      else
