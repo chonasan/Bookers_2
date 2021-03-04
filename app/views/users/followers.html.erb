@@ -1,11 +1,15 @@
-       <% if @users.followings.count == 0 %>
+       <% if @users.count == 0 %>
        
         
          <div class='col-md-10 offset-md-1'>
          <h2>Follows Users</h2>
          <table class='table table-hover table-inverse'>
            
-          <th>ユーザーはいません</th>
+          <thead>
+          <tr>
+           <h6>ユーザーはいません</h6>
+          </tr>
+          </thead>
           
        <% else %>　
      
