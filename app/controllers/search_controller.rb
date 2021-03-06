@@ -4,7 +4,7 @@ class SearchController < ApplicationController
     @model = params["search"]["model"]    #選択したmodelを@modelに代入
     @how = params["search"]["how"]        #選択した検索方法howを@howに代入
     @datas = search_for(@how, @model, @value)      #search_forの引数にインスタンス変数を定義
-  end #@datasに最終的な検索結果が入ります
+  end                                     #@datasに最終的な検索結果が入ります
 
   private
 
@@ -39,6 +39,8 @@ class SearchController < ApplicationController
       Book.where("title LIKE ?", "%#{value}%")
     end
   end
+  
+  
 
   def search_for(how, model, value)       #searchアクションで定義した情報が引数に入っている
     case how                              #検索方法のhowの中身がどれなのかwhenの条件分岐の中から探す処理
