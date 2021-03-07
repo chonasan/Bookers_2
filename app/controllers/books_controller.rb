@@ -3,11 +3,9 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @user = @book.user
+    @book_comments = @book.book_comments
     @newbook = Book.new
     @book_comment = BookComment.new
-    @book_comments = @book.book_comments
-    p @book_comments
-     logger.debug("標準出力とログファイルに記録される")
   end
 
 
@@ -37,7 +35,6 @@ class BooksController < ApplicationController
       @books = Book.all
       @book = Book.new(book_params) #Book.newの:title, :bodyを更新する
       @book.user_id = current_user.id #nillのidを更新
-      binding.pry
      if  @book.save
       flash[:notice] = "You have created book successfully."
       redirect_to book_path(@book.id)
