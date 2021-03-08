@@ -45,9 +45,11 @@
 
                 </table> 
                 
+                <table>
                     <div id="book_comment_buttons_<%= @book.id %>">
                        <%= render partial: 'book_comments/book_each', locals: { book: @book, user: @user, book_comment: @book_comment} %>
                     </div>
+                </table> 
                    
                   <div class="new-comment">
                     <%= form_with(model:[@book, @book_comment], remote: true) do |f| %>
