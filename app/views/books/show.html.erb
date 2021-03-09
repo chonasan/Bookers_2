@@ -10,9 +10,7 @@
     <div class='container px-5 px-sm-0'>
       <div class='row'>
         <div class='col-md-3'>
-
-        <%= render 'books/list', user: @user, book: @newbook %>
-
+         <%= render 'books/list', user: @user, book: @newbook %>
         </div>
 
         <div class='col-md-8 offset-md-1'>
@@ -47,10 +45,10 @@
                 
                 <table>
                     <div id="book_comment_buttons_<%= @book.id %>">
-                       <%= render partial: 'book_comments/book_each', locals: { book: @book, user: @user, book_comment: @book_comment} %>
+                       <%= render partial: 'book_comments/book_each', locals: { book: @book, user: @user, book_comments: @book_comments} %>
                     </div>
-                </table> 
-                   
+                </table>
+                
                   <div class="new-comment">
                     <%= form_with(model:[@book, @book_comment], remote: true) do |f| %>
                      <tr>
@@ -62,7 +60,7 @@
                      </tr>
                     <% end %>
                   </div>
-
+            
         </div>
 
       </div>
