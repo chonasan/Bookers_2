@@ -19,13 +19,7 @@ class BookCommentsController < ApplicationController
     @book_comment = BookComment.new
   end
 
-#目的→手段
-#消したいコメントインスタンスを取ってくる params:id
-#showページにとってくる、Bookのインスタンス parans:book_id
 
-#〇viewでの目標
-#URLに次表示したい非同期のBookのidを入れる
-#URLに消したいコメントのidを入れる
 
   private
 

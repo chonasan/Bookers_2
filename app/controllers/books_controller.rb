@@ -7,8 +7,7 @@ class BooksController < ApplicationController
     @newbook = Book.new
     @book_comment = BookComment.new
   end
-# Bookのid(目標の1つめ) #=> book.id
-# BookComentのid(目標の2つめ) #=> book_comemnt.id
+
   def index
     @user = current_user
     @book = Book.new
