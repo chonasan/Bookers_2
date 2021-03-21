@@ -2,6 +2,7 @@
           
           <h2>User info</h2>
           <table class='table'>
+      
             <tr>
                <td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
             </tr>
@@ -28,7 +29,7 @@
          
           <% if current_user == user %>
           <div class='row'>
-              <%= link_to "" , edit_user_path(user), class: "col-xs-11 btn btn-outline-secondary btn-block fas fa-user-cog" %>
+              <%= link_to "" , edit_user_path(user), class: "col-xs-11 btn btn-outline-secondary btn-block fas fa-user-cog" %> 
           </div>
          <% end %>
           <td>

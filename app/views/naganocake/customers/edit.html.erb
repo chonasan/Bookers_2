@@ -1,0 +1,92 @@
+ <div class="container">
+　<div class='row'>
+   <div class="col-lg-7">
+ 
+    
+    <div class="account-page-title">
+       <h1>会員編集画面</h1>
+    </div>
+  
+    <%= form_with model:@customer, local:true do |f| %>
+        <div class="form-group">
+          <label for="inputName">氏名</label>
+          <th><%= f.text_field :last_name, autofocus: true, id:"inputName", placeholder:"姓"%>
+          <%= f.text_field :first_name, placeholder:"名"%>
+        </div>
+        
+        <div class="form-group">
+          <label for="inputName">フリガナ</label>
+          <%= f.text_field :last_name_kana, placeholder:"姓カナ"%>
+          <%= f.text_field :first_name_kana, placeholder:"名カナ"%>
+        </div>
+        
+        <div class="form-group">
+          <label for="inputName">郵便番号</label>
+          <%= f.text_field :postal_code, placeholder:"郵便番号"%>
+        </div>
+        
+        <div class="form-group">
+          <label for="inputName">住所</label>
+          <%= f.text_field :address, placeholder:"住所"%>
+        </div>
+        
+         <div class="form-group">
+          <label for="inputName">電話番号</label>
+          <%= f.text_field :telephone_number, placeholder:"電話番号"%>
+        </div>
+        
+         <div class="form-group">
+          <label for="inputName">メールアドレス</label>
+          <%= f.email_field :email, placeholder:"メールアドレス"%>
+        </div>
+        
+        <%= f.submit "編集内容を保存", class: " btn btn-success" %>
+        <%= link_to "退会する", unsubscribe_customer_path(@customer), class: "btn btn-danger"%>
+     <% end %>
+      
+    </div>
+   </div>
+  </div> 
+ </div>
+ 
+   before_action :authenticate_customer!, except: [:new]
+
+   def new
+   end
+    
+   def edit
+     @customer = current_customer
+   end
+    
+   def show
+     @customer = current_customer
+   end
+    
+   def update
+     @customer = Customer.find(params[:id])
+     if @customer.update(customer_params)
+      flash[:notice] = "You have updated user successfully."
+      redirect_to customers_my_page_path(@customer.id)
+     else
+       render action: :edit
+     end
+   end
+   
+   def unsubscribe
+      @customer = Customer.find(params[:id]) 
+   end
+   
+   def withdraw
+    @customer = Customer.find(params[:id]) 
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+   end
+   
+   private
+
+   def customer_params
+     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :telephone_number, :is_deleted)
+   end
+
+ 
